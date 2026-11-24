@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Dataset (download it, see data/README.md)
+data/raw/
+
+# Everything the pipeline writes; regenerate with the scripts
+outputs/

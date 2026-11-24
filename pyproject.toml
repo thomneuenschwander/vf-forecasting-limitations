@@ -1,0 +1,35 @@
+[project]
+name = "vf-forecasting-limitations"
+version = "0.1.0"
+description = "Limitations of deep learning for visual field forecasting on the public UWHVF dataset"
+requires-python = ">=3.12"
+# Exact pins: the numbers in the paper were produced with these versions.
+dependencies = [
+    "polars==1.44.2",
+    "numpy==2.5.3",
+    "torch==2.11.0",
+    "optuna==5.0.0",
+    "scipy==1.18.1",
+    "matplotlib>=3.11",
+]
+
+[dependency-groups]
+dev = ["pytest>=9.1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
